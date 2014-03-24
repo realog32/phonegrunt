@@ -1,0 +1,34 @@
+/*
+ * PhoneGrunt
+ * https://github.com/realog32/phonegrunt
+ *
+ * Copyright (c) 2014 Ogom "realog32" Okafor
+ * Licensed under the MIT license.
+ */
+
+{
+    "phonegrunt": {
+
+        "options": {
+            "cordovaBin": "./node_modules/.bin/cordova",
+            "installDir": "./tmp/single_target",
+            "phonegapBin": "./node_modules/.bin/phonegap"
+        },
+
+        "init": {
+            "name": "HelloPhonegap",
+            "pkg": "com.example.hellophonegap",
+            "install_os": ["android"],
+            "uninstall_os": []
+        },
+
+        "build": {
+            "local": {
+                "plugins": {
+                    "add": ["device","battery-status","camera","contacts"],
+                    "remove": []
+                }
+            }
+        }
+    }
+}

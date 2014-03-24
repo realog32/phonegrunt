@@ -1,0 +1,65 @@
+/*
+ * PhoneGrunt
+ * https://github.com/realog32/phonegrunt
+ *
+ * Copyright (c) 2014 Ogom "realog32" Okafor
+ * Licensed under the MIT license.
+ */
+
+{
+
+    "options": {
+        "cordovaBin": "./node_modules/.bin/cordova",
+        "phonegapBin": "./node_modules/.bin/phonegap.cmd",
+    },
+
+    "hellophonegap": {
+
+        "options": {
+            "cordovaBin": "./node_modules/.bin/cordova",
+            "installDir": "./tmp/hellophonegap",
+            "phonegapBin": "./node_modules/.bin/phonegap"
+        },
+
+        "init": {
+            "name": "HelloPhonegap",
+            "pkg": "com.example.hellophonegap",
+            "install_os": ["android"],
+            "uninstall_os": []
+        },
+
+        "build": {
+            "local": {
+                "plugins": {
+                    "add": ["device","battery-status","camera","contacts"],
+                    "remove": []
+                }
+            }
+        },
+    },
+
+    "goodbyephonegap": {
+
+        "options": {
+            "cordovaBin": "./node_modules/.bin/cordova",
+            "installDir": "./tmp/multi_target/goodbyephonegap",
+            "phonegapBin": "./node_modules/.bin/phonegap"
+        },
+
+        "init": {
+            "name": "GoodbyePhonegap",
+            "pkg": "com.example.goodbyephonegap",
+            "install_os": ["android"],
+            "uninstall_os": []
+        },
+
+        "build": {
+            "local": {
+                "plugins": {
+                    "add": ["device","battery-status","camera","contacts"],
+                    "remove": []
+                }
+            }
+        }
+    }
+}

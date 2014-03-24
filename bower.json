@@ -1,0 +1,26 @@
+{
+    "name": "PhoneGrunt",
+    "version": "0.1.0",
+    "authors": [
+        "Ogom \"realog32\" Okafor <realog32@users.noreply.github.com>"
+    ],
+    "description": "A grunt plugin for automating PhoneGap application development tasks.",
+    "main": "Gruntfile.js",
+    "keywords": [
+        "PhoneGap",
+        "application",
+        "development",
+        "automation",
+        "grunt",
+        "plugin"
+    ],
+    "license": "MIT",
+    "homepage": "https://github.com/realog32/phonegrunt",
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ]
+}
