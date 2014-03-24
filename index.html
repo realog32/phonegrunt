@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Phonegrunt : A grunt plugin for automating PhoneGap application development tasks." />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Phonegrunt</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/realog32/phonegrunt">View on GitHub</a>
+
+          <h1 id="project_title">Phonegrunt</h1>
+          <h2 id="project_tagline">A grunt plugin for automating PhoneGap application development tasks.</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/realog32/phonegrunt/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/realog32/phonegrunt/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h2>
+<a name="getting-started" class="anchor" href="#getting-started"><span class="octicon octicon-link"></span></a>Getting Started</h2>
+
+<p>This plugin requires Grunt <code>~0.4.2</code> and supports PhoneGap API <code>~3.3.0-0.19.6</code>.</p>
+
+<p>If you haven't used <a href="http://gruntjs.com/">Grunt</a> before, be sure to check out the <a href="http://gruntjs.com/getting-started">Getting Started</a> guide, as it explains how to create a <a href="http://gruntjs.com/sample-gruntfile">Gruntfile</a> as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:</p>
+
+<pre lang="shell"><code>$ npm install phonegrunt --save-dev
+</code></pre>
+
+<p>Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:</p>
+
+<div class="highlight highlight-js"><pre><span class="nx">grunt</span><span class="p">.</span><span class="nx">loadNpmTasks</span><span class="p">(</span><span class="s1">'phonegrunt'</span><span class="p">);</span>
+</pre></div>
+
+<h2>
+<a name="the-phonegrunt-task" class="anchor" href="#the-phonegrunt-task"><span class="octicon octicon-link"></span></a>The "PhoneGrunt" task</h2>
+
+<h3>
+<a name="overview" class="anchor" href="#overview"><span class="octicon octicon-link"></span></a>Overview</h3>
+
+<p>In your project's Gruntfile, add a section named <code>phonegrunt</code> to the data object passed into <code>grunt.initConfig()</code>.</p>
+
+<div class="highlight highlight-js"><pre><span class="nx">grunt</span><span class="p">.</span><span class="nx">initConfig</span><span class="p">({</span>
+
+    <span class="nx">phonegrunt</span><span class="o">:</span> <span class="p">{</span>
+
+        <span class="cm">/* Global task options */</span>
+        <span class="nx">options</span><span class="o">:</span> <span class="p">{</span>
+            <span class="c1">// Mobile app install path, PhoneGap, and Cordova binary paths go here.</span>
+        <span class="p">},</span>
+
+        <span class="cm">/* Global initialization configuration. */</span>
+        <span class="nx">init</span><span class="o">:</span> <span class="p">{</span>
+            <span class="c1">// Mobile application title, package name, and target mobile operating systems are defined here.</span>
+        <span class="p">},</span>
+
+        <span class="cm">/* Global build configuration. */</span>
+        <span class="nx">build</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">local</span><span class="o">:</span> <span class="p">{</span>
+                <span class="c1">// Local environment build configuration like plugins to install/uninstall go here.</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+
+        <span class="cm">/* Targets for multiple application development. (Optional.) If unspecified, application is installed in current directory. */</span>
+        <span class="nx">your_first_target</span><span class="o">:</span> <span class="p">{</span>
+            <span class="cm">/* target-specific options override global options. */</span>
+            <span class="nx">options</span><span class="o">:</span> <span class="p">{},</span>
+            <span class="cm">/* target-specific initialization configuration. */</span>
+            <span class="nx">init</span><span class="o">:</span> <span class="p">{},</span>
+            <span class="cm">/* target-specific build configurations. */</span>
+            <span class="nx">build</span><span class="o">:</span> <span class="p">{}</span>
+        <span class="p">},</span>
+
+        <span class="cm">/* Multiple targets can be defined */</span>
+        <span class="nx">another_target</span><span class="o">:</span> <span class="p">{</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+<span class="p">});</span>
+</pre></div>
+
+<h3>
+<a name="task-options" class="anchor" href="#task-options"><span class="octicon octicon-link"></span></a>Task Options</h3>
+
+<h4>
+<a name="optionscordovabin" class="anchor" href="#optionscordovabin"><span class="octicon octicon-link"></span></a>options.cordovaBin</h4>
+
+<p>Type: <code>String</code>
+Default value: <code>'./node_modules/.bin/cordova'</code></p>
+
+<p>Path to the Apache cordova binary.</p>
+
+<h4>
+<a name="optionsinstalldir" class="anchor" href="#optionsinstalldir"><span class="octicon octicon-link"></span></a>options.installDir</h4>
+
+<p>Type: <code>String</code>
+Default value: <code>'./'</code></p>
+
+<p>Mobile application source installation directory. Caution: Multiple targets will overwrite the same directory unless target-specific options.installDir is defined.</p>
+
+<h4>
+<a name="optionsphonegapbin" class="anchor" href="#optionsphonegapbin"><span class="octicon octicon-link"></span></a>options.phonegapBin</h4>
+
+<p>Type: <code>String</code>
+Default value: <code>'./node_modules/.bin/phonegap'</code></p>
+
+<p>Path to the Adobe PhoneGap binary.</p>
+
+<h3>
+<a name="initialization-configuration" class="anchor" href="#initialization-configuration"><span class="octicon octicon-link"></span></a>Initialization Configuration</h3>
+
+<h4>
+<a name="initname" class="anchor" href="#initname"><span class="octicon octicon-link"></span></a>init.name</h4>
+
+<p>Type: <code>String</code>
+Default value: <code>'HelloPhonegap'</code></p>
+
+<p>The PhoneGap mobile application's name.</p>
+
+<h4>
+<a name="initpkg" class="anchor" href="#initpkg"><span class="octicon octicon-link"></span></a>init.pkg</h4>
+
+<p>Type: <code>String</code>
+Default value: <code>'com.example.hellophonegap'</code></p>
+
+<p>PhoneGap application package namespace.</p>
+
+<h4>
+<a name="initinstall_os" class="anchor" href="#initinstall_os"><span class="octicon octicon-link"></span></a>init.install_os</h4>
+
+<p>Type: <code>Array</code>
+Default value: <code>[]</code></p>
+
+<p>Mobile operating systems to install support for. Eg: <code>["android","ios"]</code>
+See PhoneGap's <a href="http://docs.phonegap.com/en/3.4.0/guide_platforms_index.md.html#Platform%20Guides">platform guides</a> documentation for additional information on supported operating systems and required development environment setup.</p>
+
+<h4>
+<a name="inituninstall_os" class="anchor" href="#inituninstall_os"><span class="octicon octicon-link"></span></a>init.uninstall_os</h4>
+
+<p>Type: <code>Array</code>
+Default value: <code>[]</code></p>
+
+<p>Mobile operating systems to uninstall support for. Eg: <code>["firefoxos"]</code></p>
+
+<h3>
+<a name="build-configuration" class="anchor" href="#build-configuration"><span class="octicon octicon-link"></span></a>Build Configuration</h3>
+
+<p>Currently, only local workflow task options are supported. Remote workflow is planned for a future release.</p>
+
+<h4>
+<a name="buildlocalplugins" class="anchor" href="#buildlocalplugins"><span class="octicon octicon-link"></span></a>build.local.plugins</h4>
+
+<p>Type: <code>Object</code></p>
+
+<p>Configuration object for specifying whether cordova plugins should be added or removed from target build environment.</p>
+
+<h4>
+<a name="buildlocalpluginsadd" class="anchor" href="#buildlocalpluginsadd"><span class="octicon octicon-link"></span></a>build.local.plugins.add</h4>
+
+<p>Type: <code>Array</code>
+Default value: <code>[]</code></p>
+
+<p>Array of cordova plugins to add to the build. Eg: <code>["device","battery-status","camera"]</code></p>
+
+<h4>
+<a name="buildlocalpluginsremove" class="anchor" href="#buildlocalpluginsremove"><span class="octicon octicon-link"></span></a>build.local.plugins.remove</h4>
+
+<p>Type: <code>Array</code>
+Default value: <code>[]</code></p>
+
+<p>Array of cordova plugins to remove from the build. Eg: <code>["geolocation"]</code></p>
+
+<h3>
+<a name="usage-examples" class="anchor" href="#usage-examples"><span class="octicon octicon-link"></span></a>Usage Examples</h3>
+
+<h4>
+<a name="single-target-build-installed-in-same-directory-as-gruntfile" class="anchor" href="#single-target-build-installed-in-same-directory-as-gruntfile"><span class="octicon octicon-link"></span></a>Single-target build installed in same directory as Gruntfile.</h4>
+
+<p>In this example, <code>android</code> and <code>ios</code> support will be enabled for the target PhoneGap application, which will be created in the same directory as the Gruntfile. The native application class file will be namespaced to <code>com.example.hellophonegap</code>. Eg. The android application entry point will be located at <code>./platforms/android/src/com/example/hellophonegap/HelloPhonegap.java</code> (relative to the gruntfile). The <code>build</code> task will add the <code>device</code>, <code>battery-status</code>, and <code>camera</code> plugins while removing the <code>geolocation</code> plugin from the build.</p>
+
+<div class="highlight highlight-js"><pre><span class="nx">grunt</span><span class="p">.</span><span class="nx">initConfig</span><span class="p">({</span>
+
+    <span class="nx">phonegrunt</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">options</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">cordovaBin</span><span class="o">:</span> <span class="s1">'./node_modules/.bin/cordova'</span><span class="p">,</span>
+            <span class="nx">installDir</span><span class="o">:</span> <span class="s1">'./'</span><span class="p">,</span>
+            <span class="nx">phonegapBin</span><span class="o">:</span> <span class="s1">'./node_modules/.bin/phonegap'</span>
+        <span class="p">},</span>
+        <span class="nx">init</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">name</span><span class="o">:</span> <span class="s1">'HelloPhonegap'</span><span class="p">,</span>
+            <span class="nx">pkg</span><span class="o">:</span> <span class="s1">'com.example.hellophonegap'</span><span class="p">,</span>
+            <span class="nx">install_os</span><span class="o">:</span> <span class="p">[</span><span class="s2">"android"</span><span class="p">,</span> <span class="s2">"ios"</span><span class="p">],</span>
+            <span class="nx">uninstall_os</span><span class="o">:</span> <span class="p">[]</span>
+        <span class="p">},</span>
+        <span class="nx">build</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">local</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">plugins</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="nx">add</span><span class="o">:</span> <span class="p">[</span><span class="s2">"device"</span><span class="p">,</span><span class="s2">"battery-status"</span><span class="p">,</span><span class="s2">"camera"</span><span class="p">],</span>
+                    <span class="nx">remove</span><span class="o">:</span> <span class="p">[</span><span class="s2">"geolocation"</span><span class="p">]</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+
+<h4>
+<a name="multi-target-build-created-in-separate-directories" class="anchor" href="#multi-target-build-created-in-separate-directories"><span class="octicon octicon-link"></span></a>Multi-target build created in separate directories.</h4>
+
+<p>In this example, <code>ios</code> and <code>android</code> support will be enabled for the <code>HelloPhonegap</code> and <code>GoodbyePhonegap</code> targets respectively. IOS and Android mobile applications will be created in the <code>./hellophonegap</code> and <code>./goodbyephonegap</code> directories relative to the Gruntfile. No plugins will be installed for the GoodbyePhonegap target.</p>
+
+<div class="highlight highlight-js"><pre><span class="nx">grunt</span><span class="p">.</span><span class="nx">initConfig</span><span class="p">({</span>
+
+    <span class="nx">phonegrunt</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">options</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">cordovaBin</span><span class="o">:</span> <span class="s1">'./node_modules/.bin/cordova'</span><span class="p">,</span>
+            <span class="nx">phonegapBin</span><span class="o">:</span> <span class="s1">'./node_modules/.bin/phonegap'</span>
+        <span class="p">},</span>
+        <span class="nx">HelloPhonegap</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">options</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">installDir</span><span class="o">:</span> <span class="s1">'./hellophonegap'</span><span class="p">,</span>
+            <span class="p">},</span>
+            <span class="nx">init</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">name</span><span class="o">:</span> <span class="s1">'HelloPhonegap'</span><span class="p">,</span>
+                <span class="nx">pkg</span><span class="o">:</span> <span class="s1">'com.example.hellophonegap'</span><span class="p">,</span>
+                <span class="nx">install_os</span><span class="o">:</span> <span class="p">[</span><span class="s2">"ios"</span><span class="p">],</span>
+                <span class="nx">uninstall_os</span><span class="o">:</span> <span class="p">[]</span>
+            <span class="p">},</span>
+            <span class="nx">build</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">local</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="nx">plugins</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="nx">add</span><span class="o">:</span> <span class="p">[</span><span class="s2">"device"</span><span class="p">,</span><span class="s2">"battery-status"</span><span class="p">,</span><span class="s2">"camera"</span><span class="p">],</span>
+                        <span class="nx">remove</span><span class="o">:</span> <span class="p">[</span><span class="s2">"geolocation"</span><span class="p">]</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="nx">GoodbyePhonegap</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">options</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">installDir</span><span class="o">:</span> <span class="s1">'./goodbyephonegap'</span><span class="p">,</span>
+            <span class="p">},</span>
+            <span class="nx">init</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">name</span><span class="o">:</span> <span class="s1">'GoodbyePhonegap'</span><span class="p">,</span>
+                <span class="nx">pkg</span><span class="o">:</span> <span class="s1">'com.example.goodbyephonegap'</span><span class="p">,</span>
+                <span class="nx">install_os</span><span class="o">:</span> <span class="p">[</span><span class="s2">"android"</span><span class="p">],</span>
+                <span class="nx">uninstall_os</span><span class="o">:</span> <span class="p">[]</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+
+<p>To simply update plugin requirements for your application without performing init tasks, using the example above one can run:</p>
+
+<pre lang="shell"><code>$ grunt phonegrunt:HelloPhonegap:build
+</code></pre>
+
+<h2>
+<a name="support" class="anchor" href="#support"><span class="octicon octicon-link"></span></a>Support</h2>
+
+<p>Please report any issues <a href="https://github.com/realog32/phonegrunt/issues">here</a> and feel absolutely welcome to fork and submit pull requests.</p>
+
+<h2>
+<a name="contributing" class="anchor" href="#contributing"><span class="octicon octicon-link"></span></a>Contributing</h2>
+
+<p>In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using <a href="http://gruntjs.com/">Grunt</a>.</p>
+
+<h2>
+<a name="release-history" class="anchor" href="#release-history"><span class="octicon octicon-link"></span></a>Release History</h2>
+
+<p><em>(Nothing yet)</em></p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Phonegrunt maintained by <a href="https://github.com/realog32">realog32</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
